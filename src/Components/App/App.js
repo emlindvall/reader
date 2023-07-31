@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Feed from '../Feed/Feed.js';
+import Header from '../Header/Header';
+import Feed from '../Feed/Feed';
 import { mockData } from '../../mockData/mockData.js';
 import './App.css';
 
@@ -15,7 +16,10 @@ const App = () => {
   }, [fetchData]);
 
   return(
-    <Feed feed={feed}/>
+    <div className="display-container">
+      <Header/>
+      <Feed feed={feed}/>
+    </div>
   )
 }
 

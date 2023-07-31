@@ -4,7 +4,7 @@ import './Feed.css';
 const Feed = ({ feed }) => {
   console.log(feed, "feed in Feed component")
   return(
-    <p>hi</p>
+    <p>this is the feed</p>
   )
 }
 
