@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import authorPng from '../../assets/author.png';
 import './StoryCard.css';
 
-const StoryCard = ({ story, id }) => {
+const StoryCard = ({ story }) => {
 
   const formattedDate = (() => {
     const date = new Date(story.publishedAt);
@@ -32,7 +32,7 @@ const StoryCard = ({ story, id }) => {
       </div>
       <div className="bottom-row">
         <div className="bottom-row-left">
-          <NavLink to={`/${id}`} style={{ textDecoration: 'none', color: "#201F1E" }}>
+          <NavLink to={`/${story.newId}`} style={{ textDecoration: 'none', color: "#201F1E" }}>
             <p className="headline">{story.title}</p>
           </NavLink>
           <p className="description">{story.description}</p>
