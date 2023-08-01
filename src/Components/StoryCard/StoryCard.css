@@ -1,0 +1,73 @@
+.story-card-container {
+  margin-bottom: 5%;
+}
+
+.top-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.top-row-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.author-png {
+  height: 25px;
+  width: 25px;
+  align-self: center;
+}
+
+.author, .source, .description {
+  font-size: .9em;
+  font-weight: 300;
+}
+
+.source {
+  font-weight: 400;
+}
+
+.for {
+  font-size: .75em;
+  font-weight: 100;
+  margin-top: 13px;
+  align-self: center;
+}
+
+.top-row-right {
+  align-self: center;
+}
+
+.date-time {
+  font-size: .75em;
+  font-weight: 100;
+}
+
+.bottom-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 2%;
+}
+
+.bottom-row-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.headline {
+  margin: 0% 0% 0% 0%;
+  font-family: Source Pro;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.story-png {
+  height: 150px;
+  width: 250px;
+}

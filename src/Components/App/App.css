@@ -1,5 +1,5 @@
 .display-container {
-  height: 90vh;
-  width: 60vw;
-  border: 1px cyan solid;
+  height: fit-content;
+  width: 55vw;
+  margin-bottom: 5%;
 }
