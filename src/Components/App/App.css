@@ -3,3 +3,15 @@
   width: 55vw;
   margin-bottom: 5%;
 }
+
+@media screen and (max-width: 50em) {
+  .display-container {
+    width: 65vw;
+  }
+}
+
+@media screen and (max-width: 35em) {
+  .display-container {
+    width: 85vw;
+  }
+}

@@ -1,5 +1,6 @@
 .story-card-container {
   margin-bottom: 5%;
+  color: #201F1E;
 }
 
 .top-row {
@@ -22,12 +23,13 @@
   align-self: center;
 }
 
-.author, .source, .description {
+.author, .description {
   font-size: .9em;
   font-weight: 300;
 }
 
 .source {
+  font-size: .9em;
   font-weight: 400;
 }
 
@@ -65,9 +67,31 @@
   font-family: Source Pro;
   font-size: 1.3em;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .story-png {
   height: 150px;
   width: 250px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 50em) {
+  .story-png {
+    height: 50%;
+    width: 100%;
+  }
+
+  .bottom-row {
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (max-width: 35em) {
+  .story-png {
+    height: 50%;
+    width: 100%;
+  }
 }

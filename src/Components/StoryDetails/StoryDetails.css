@@ -1,0 +1,48 @@
+.source-container {
+  color: #201F1E;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 0% 0% 2% 0%;
+  gap: 4px;
+}
+
+.link-png {
+  height: 12px;
+  width: 12px;
+  align-self: center;
+  margin-right: 2px;
+}
+
+.redirect {
+  font-size: .9em;
+  font-weight: 300;
+}
+
+.source-link  {
+  align-self: center;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: Source Pro;
+  margin: 0px 0px 1px 0px;
+}
+
+.details-story-png {
+  margin-top: 3%;
+  width: 100%;
+}
+
+.content  {
+  margin: 3% 0% 1% 0%;
+}
+
+.back-button {
+  border: none;
+  border-radius: 5vh;
+  padding: 5px 15px 5px 15px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color:#e6e6e6;
+}
