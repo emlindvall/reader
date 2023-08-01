@@ -7,6 +7,7 @@ const Feed = ({ feed }) => {
   const allStories = feed.map((story) => {
     return(
       <StoryCard
+        key={nanoid()}
         story={story}
         id={nanoid()}
       />
