@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import StoryCard from '../StoryCard/StoryCard';
-import { nanoid } from "nanoid";
 import './Feed.css';
 
 const Feed = ({ feed }) => {
-
-  const allStories = feed.map((story) => {
-    return(
-      <StoryCard
-        key={nanoid()}
-        story={story}
-      />
-    )
-  })
-
-  return(
+  return (
     <div className="feed-container">
-      {allStories}
+      {feed.map((story) => (
+        <StoryCard key={story.newId} story={story} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
 export default Feed;

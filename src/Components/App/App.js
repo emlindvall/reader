@@ -8,24 +8,28 @@ import { mockData } from '../../mockData/mockData.js';
 import './App.css';
 
 const App = () => {
-  const [oldFeed, setOldFeed] = useState([]);
   const [feed, setFeed] = useState([]);
 
-  const fetchData = () => {
-    setOldFeed(mockData.data[0].articles);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const storedFeed = JSON.parse(localStorage.getItem('feed'));
+      let newFeed = [];
+      
+      if (storedFeed) {
+        newFeed = storedFeed;
+      } else {
+        newFeed = mockData.data[0].articles.map((story) => ({
+          ...story,
+          newId: nanoid(),
+        }));
+        localStorage.setItem('feed', JSON.stringify(newFeed));
+      }
+      
+      setFeed(newFeed);
+    };
+
     fetchData();
   }, []);
-
-  useEffect(() => {
-    const newFeed = oldFeed.map((story) => ({
-      ...story,
-      newId: nanoid(),
-    }));
-    setFeed(newFeed);
-  }, [oldFeed]);
 
   return (
     <div className="display-container">

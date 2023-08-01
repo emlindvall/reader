@@ -1,5 +1,6 @@
 .story-card-container {
   margin-bottom: 5%;
+  color: #201F1E;
 }
 
 .top-row {
@@ -22,12 +23,13 @@
   align-self: center;
 }
 
-.author, .source, .description {
+.author, .description {
   font-size: .9em;
   font-weight: 300;
 }
 
 .source {
+  font-size: .9em;
   font-weight: 400;
 }
 
