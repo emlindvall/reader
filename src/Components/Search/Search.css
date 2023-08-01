@@ -1,0 +1,26 @@
+.search-submit {
+  padding: 5px;
+  padding-left: 15px;
+  background: #F1F1F1;
+  border: none;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  cursor: pointer;
+}
+
+.search-png {
+  height: 10px;
+  width: 10px;
+  cursor: pointer;
+}
+
+.search-field {
+  padding: 5px;
+  background: #F1F1F1;
+  border: none;
+  outline: none;
+  color: #201F1E;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  cursor: pointer;
+}
