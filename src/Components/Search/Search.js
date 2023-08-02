@@ -5,7 +5,7 @@ import './Search.css';
 const Search = ({ handleSearch }) => {
   const handleChange = (event) => {
     event.preventDefault();
-    handleSearch(event.target.value);
+    handleSearch(event.target.value.toLowerCase());
   }
 
   return(
