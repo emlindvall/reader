@@ -21,9 +21,9 @@ const StoryDetails = ({ feed }) => {
     };
 
     findStory();
-  }, [feed, id]);
+  }, [feed, id, loading]);
 
-  const formattedDate = (() => {
+  const formattedDate = () => {
     const date = new Date(story.publishedAt);
     return date.toLocaleDateString('en-us', {
       year: 'numeric',
@@ -33,34 +33,36 @@ const StoryDetails = ({ feed }) => {
       minute: 'numeric',
       hour12: true,
     });
-  })()
+  }; // You missed the () here to call the function
 
   return (
     <div className="story-details-container">
-      {loading ? (<p>Loading....</p>) : 
-      (<div>
-        <div className="top-row">
-        <div className="top-row-left">
-          <img src={authorPng} alt="Placeholder author image" className="author-png"/>
-          <p className="author">{story.author}</p>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          <div className="top-row">
+            <div className="top-row-left">
+              <img src={authorPng} alt="Placeholder author image" className="author-png" />
+              <p className="author">{story.author}</p>
+            </div>
+            <div className="top-row-right">
+              <p className="date-time">{formattedDate()}</p>
+            </div>
+          </div>
+          <p className="headline">{story.title}</p>
+          <img src={story.urlToImage} alt="Story preview image" className="details-story-png" />
+          <p className="content">{story.content.split('[')[0]}</p>
+          <NavLink to={`${story.url}`} style={{ textDecoration: 'none', color: '#201F1E' }}>
+            <div className="source-container">
+              <img src={linkPng} alt="Link icon, not a hyperlink" className="link-png" />
+              <p className="redirect">Read the rest at</p>
+              <p className="source-link">{story.source.name}</p>
+            </div>
+          </NavLink>
         </div>
-        <div className="top-row-right">
-          <p className="date-time">{formattedDate}</p>
-        </div>
-      </div>
-      <p className="headline">{story.title}</p>
-      <img src={story.urlToImage} alt="Story preview image" className="details-story-png"/>
-      <p className="content">{story.content.split("[")[0]}</p>
-      <NavLink to={`${story.url}`} style={{ textDecoration: 'none', color: "#201F1E" }}>
-        <div className="source-container">
-          <img src={linkPng} alt="Link icon, not a hyperlink" className="link-png"/>
-          <p className="redirect">Read the rest at</p>
-          <p className="source-link">{story.source.name}</p>
-        </div>
-      </NavLink>
-      </div>)
-      }
-      <NavLink to={"/"} style={{ textDecoration: 'none', color: "#201F1E" }}>
+      )}
+      <NavLink to={'/'} style={{ textDecoration: 'none', color: '#201F1E' }}>
         <button className="back-button">back</button>
       </NavLink>
     </div>
