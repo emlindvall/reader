@@ -4,51 +4,47 @@ import { nanoid } from 'nanoid';
 import Header from '../Header/Header';
 import Feed from '../Feed/Feed';
 import StoryDetails from '../StoryDetails/StoryDetails';
-import { mockData } from '../../mockData/mockData.js';
+import { getStories } from '../../utilities/apiCall';
 import './App.css';
 
 const App = () => {
   const [feed, setFeed] = useState([]);
-  const [query, setQuery] = useState([]);
+  const [resultsFeed, setResultsFeed] = useState([]);
+  // const [query, setQuery] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
-      const storedFeed = JSON.parse(localStorage.getItem('feed'));
-      let newFeed = [];
-      
-      if (storedFeed) {
-        newFeed = storedFeed;
-      } else {
-        newFeed = mockData.data[0].articles.map((story) => ({
+      try {
+        const data = await getStories();
+        const newFeed = data.articles.map((story) => ({
           ...story,
           newId: nanoid(),
         }));
         localStorage.setItem('feed', JSON.stringify(newFeed));
+        setFeed(newFeed);
+      } catch (error) {
+        console.error('Error fetching stories:', error);
       }
-      
-      setFeed(newFeed);
     };
 
     fetchData();
   }, []);
 
   const handleSearch = (incomingQuery) => {
-    setQuery(incomingQuery.toLowerCase());
-    if (query) {
-      const resultsFeed = feed.filter((story) => {
+    // setQuery(incomingQuery);
+    const resultsFeed = feed.filter((story) => {
         return (
-          story.title.toLowerCase().includes(query) ||
-          story.description.toLowerCase().includes(query) ||
-          story.author.toLowerCase().includes(query)
+          story.title.toLowerCase().includes(incomingQuery) ||
+          (story.description !== null && story.description.toLowerCase().includes(incomingQuery)) ||
+          (story.author !== null && story.author.toLowerCase().includes(incomingQuery))
         );
-      });
-      setFeed(resultsFeed);
-    }
-    console.log(feed);
+    });
+    setResultsFeed(resultsFeed);
   };
 
   const reloadFeed = () => {
-    setQuery('');
+    setResultsFeed('');
+    // setQuery('');
     setFeed(JSON.parse(localStorage.getItem('feed')));
   }
 
@@ -56,7 +52,7 @@ const App = () => {
     <div className="display-container">
       <Header handleSearch={handleSearch}/>
       <Routes>
-        <Route path="/" element={<Feed feed={feed} query={query} reloadFeed={reloadFeed}/>} />
+        <Route path="/" element={<Feed feed={feed} resultsFeed={resultsFeed} reloadFeed={reloadFeed}/>} />
         <Route path="/:id" element={<StoryDetails feed={feed} />} />
       </Routes>
     </div>
