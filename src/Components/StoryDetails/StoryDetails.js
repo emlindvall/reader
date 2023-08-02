@@ -35,8 +35,6 @@ const StoryDetails = ({ feed }) => {
     });
   })()
 
-  console.log(story);
-
   return (
     <div className="story-details-container">
       {loading ? (<p>Loading....</p>) : 
