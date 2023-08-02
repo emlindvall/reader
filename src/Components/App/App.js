@@ -9,6 +9,7 @@ import './App.css';
 
 const App = () => {
   const [feed, setFeed] = useState([]);
+  const [query, setQuery] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,11 +32,31 @@ const App = () => {
     fetchData();
   }, []);
 
+  const handleSearch = (incomingQuery) => {
+    setQuery(incomingQuery.toLowerCase());
+    if (query) {
+      const resultsFeed = feed.filter((story) => {
+        return (
+          story.title.toLowerCase().includes(query) ||
+          story.description.toLowerCase().includes(query) ||
+          story.author.toLowerCase().includes(query)
+        );
+      });
+      setFeed(resultsFeed);
+    }
+    console.log(feed);
+  };
+
+  const reloadFeed = () => {
+    setQuery('');
+    setFeed(JSON.parse(localStorage.getItem('feed')));
+  }
+
   return (
     <div className="display-container">
-      <Header />
+      <Header handleSearch={handleSearch}/>
       <Routes>
-        <Route path="/" element={<Feed feed={feed} />} />
+        <Route path="/" element={<Feed feed={feed} query={query} reloadFeed={reloadFeed}/>} />
         <Route path="/:id" element={<StoryDetails feed={feed} />} />
       </Routes>
     </div>
